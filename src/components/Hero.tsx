@@ -3,7 +3,7 @@ import { ArrowDown, FileDown } from "lucide-react";
 import profileImg from "@/assets/profile.png";
 import ThreeBackground from "./ThreeBackground";
 import ExpertAnimatedRole from "./ui/ExpertAnimatedRole";
-import cvFile from "@/assets/salman hossain Front-End Developer.pdf";
+import cvFile from "@/assets/salman as a mern stack developer.pdf";
 const techIcons = [
   { name: "React", color: "#61DAFB", pos: "top-0 left-0" },
   { name: "JS", color: "#F7DF1E", pos: "top-0 right-0" },
@@ -22,7 +22,7 @@ const Hero = () => {
     >
       <ThreeBackground />
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
           {/* Left */}
           <div className="flex-1 text-center lg:text-left">
             <motion.p
