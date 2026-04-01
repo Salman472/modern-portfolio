@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Phone, Github, Linkedin, Twitter } from "lucide-react";
+import { Send, Mail, MapPin, Phone, Github, Linkedin, FacebookIcon, } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
 import { useToast } from "@/hooks/use-toast";
@@ -35,9 +35,11 @@ const Contact = () => {
   ];
 
   const socials = [
-    { icon: Github, href: "#" },
-    { icon: Linkedin, href: "#" },
-    { icon: Twitter, href: "#" },
+    { icon: Github, href: "https://github.com/Salman472", },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/salman2025/", },
+    { icon: FacebookIcon, href: "https://www.facebook.com/md.sayem.hossain.71778" },
+    
+    
   ];
 
   return (
@@ -61,6 +63,7 @@ const Contact = () => {
                   <span className="text-muted-foreground group-hover:text-foreground transition-colors">{item.label}</span>
                 </a>
               ))}
+              {/* social links */}
               <div className="flex gap-3 pt-4">
                 {socials.map((s, i) => (
                   <a key={i} href={s.href} className="w-10 h-10 rounded-lg flex items-center justify-center glass hover:glow transition-all hover:-translate-y-1">

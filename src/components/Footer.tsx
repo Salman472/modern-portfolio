@@ -1,9 +1,8 @@
-
-import { ArrowUp, FacebookIcon, Github, Linkedin,  } from "lucide-react";
+import { ArrowUp, FacebookIcon, Github, Linkedin } from "lucide-react";
 
 const socialLinks = [
   {
-    Icon: Github,          // অথবা FaGithub
+    Icon: Github,
     href: "https://github.com/Salman472",
     label: "GitHub",
   },
@@ -26,33 +25,42 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <a href="#home" className="font-heading text-xl font-bold gradient-text">
+            <a
+              href="#home"
+              className="font-heading text-xl font-bold gradient-text"
+            >
               Salman<span className="text-foreground">.</span>Hossain
             </a>
-            <p className="text-sm text-muted-foreground mt-1">Full Stack Developer</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Full Stack Developer
+            </p>
           </div>
 
           <div className="flex gap-6 text-sm text-muted-foreground">
             {["Home", "About", "Projects", "Contact"].map((link) => (
-              <a key={link} href={`#${link.toLowerCase()}`} className="hover:text-foreground transition-colors">
+              <a
+                key={link}
+                href={`#${link.toLowerCase()}`}
+                className="hover:text-foreground transition-colors"
+              >
                 {link}
               </a>
             ))}
           </div>
 
           <div className="flex items-center gap-4">
-           {socialLinks.map(({ Icon, href, label }, i) => (
-      <a
-        key={i}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-muted-foreground hover:text-foreground transition-colors"
-        aria-label={label}
-      >
-        <Icon size={18} />
-      </a>
-    ))}
+            {socialLinks.map(({ Icon, href, label }, i) => (
+              <a
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={label}
+              >
+                <Icon size={18} />
+              </a>
+            ))}
             <button
               onClick={scrollToTop}
               className="ml-2 w-9 h-9 rounded-lg flex items-center justify-center glass hover:glow transition-all"
