@@ -25,8 +25,8 @@ const Contact = () => {
           setIsSent(true);
           setSending(false);
           form.current.reset();
-          toast.success("Message sent successfully! ✅", {
-            position: "top-right",
+          toast.success("I'll get back to you soon.", {
+            position:"bottom-right",
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,

@@ -4,25 +4,25 @@ import SectionHeading from "./SectionHeading";
 
 const timeline = [
   {
-    type: "learning",
-    title: "Complete Web Development Course Batch-12",
-    org: "Programming Hero",
-    period: "june-2025",
-    description: "Leading development of scalable web applications using React and Node.js. Mentoring junior developers and driving architectural decisions.",
+   type: "learning",
+title: "Complete Web Development Course Batch-12",
+org: "Programming Hero",
+period: "June-2025",
+description: "Completed an intensive full-stack web development program at Programming Hero, focusing on building scalable applications with React and Node.js, and gaining hands-on experience with modern development workflows."
   },
   {
     type: "education",
     title: "Diploma in Engineering",
     org: "Kishoreganj Polytechnic Institute",
     period: "2024 - 2027",
-    description: "Built 20+ client projects including e-commerce platforms, dashboards, and SaaS applications using the MERN stack.",
+    description: "Diploma in Engineering at Kishoreganj Polytechnic Institute, focusing on MERN stack projects like e-commerce platforms, dashboards, and SaaS applications."
   },
   {
     type: "education",
     title: "SSC-22",
     org: "Haji Sayed Ali Khan High School",
     period: "2016 - 2022",
-    description: "Graduated with honors. Focused on software engineering, data structures, and web technologies.",
+    description: "Completed Secondary School Certificate (SSC) from Haji Sayed Ali Khan High School, building a strong foundation in science, mathematics, and computer fundamentals."
   }
 ];
 

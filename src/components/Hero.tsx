@@ -99,7 +99,7 @@ const Hero = () => {
                 <img
                   src={profileImg}
                   alt="MD Salman Hossain"
-                  className="w-full h-full object-cover animate-float  "
+                  className="h-full w-full rounded-full object-cover animate-float  "
                   loading="eager"
                 />
               </div>
