@@ -4,33 +4,26 @@ import SectionHeading from "./SectionHeading";
 
 const timeline = [
   {
-    type: "work",
-    title: "Senior Full Stack Developer",
-    org: "Tech Company",
-    period: "2023 - Present",
+    type: "learning",
+    title: "Complete Web Development Course Batch-12",
+    org: "Programming Hero",
+    period: "june-2025",
     description: "Leading development of scalable web applications using React and Node.js. Mentoring junior developers and driving architectural decisions.",
   },
   {
-    type: "work",
-    title: "Full Stack Developer",
-    org: "Digital Agency",
-    period: "2021 - 2023",
+    type: "education",
+    title: "Diploma in Engineering",
+    org: "Kishoreganj Polytechnic Institute",
+    period: "2024 - 2027",
     description: "Built 20+ client projects including e-commerce platforms, dashboards, and SaaS applications using the MERN stack.",
   },
   {
     type: "education",
-    title: "B.Sc. in Computer Science",
-    org: "University of Dhaka",
-    period: "2018 - 2022",
+    title: "SSC-22",
+    org: "Haji Sayed Ali Khan High School",
+    period: "2016 - 2022",
     description: "Graduated with honors. Focused on software engineering, data structures, and web technologies.",
-  },
-  {
-    type: "work",
-    title: "Junior Web Developer",
-    org: "Startup Inc.",
-    period: "2020 - 2021",
-    description: "Started professional journey building responsive websites and learning modern development practices.",
-  },
+  }
 ];
 
 const Experience = () => {

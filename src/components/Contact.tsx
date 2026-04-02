@@ -29,9 +29,9 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: "salman@example.com", href: "mailto:salman@example.com" },
-    { icon: MapPin, label: "Dhaka, Bangladesh", href: "#" },
-    { icon: Phone, label: "+880 1XXX-XXXXXX", href: "#" },
+    { icon: Mail, label: "salmanhossain.dev@gmail.com", href: "mailto:salmanhossain.dev@gmail.com" },
+    { icon: MapPin, label: "Nandail, Mymensingh, Bangladesh", href: "#" },
+    { icon: Phone, label: "+880 1825328723", href: "#" },
   ];
 
   const socials = [

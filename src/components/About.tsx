@@ -2,12 +2,13 @@ import { FileDown } from "lucide-react";
 import aboutImg from "@/assets/about.png";
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
+import CountUp from "react-countup";
 
 const stats = [
-  { label: "Month Hands On Experience", value: "8+" },
-  { label: "Projects Completed", value: "20+" },
+  { label: "Month Hands On Experience", value: 8 },
+  { label: "Projects Completed", value: 20 },
   // { label: "Happy Clients", value: "30+" },
-  { label: "Technologies", value: "17+" },
+  { label: "Technologies", value: 17 },
 ];
 
 const About = () => {
@@ -45,25 +46,12 @@ const About = () => {
               focused on building modern, scalable, and high-performance web
               applications. I specialize in creating clean, maintainable code
               and crafting intuitive user experiences that blend functionality
-              with elegant design. With strong expertise in 
-              <span className="gradient-text font-bold">
-                {" "}
-               JavaScript,
-              </span>{" "} 
-              <span className="gradient-text font-bold">
-                {" "}
-               
-              React,
-              </span>{" "}
-              <span className="gradient-text font-bold">
-                {" "}
-               Next.js,
-              </span>{" "}
-               and the <span className="gradient-text font-bold">
-                {" "}
-               MERN stack
-              </span>{" "} I enjoy turning complex problems into
-              simple, efficient solutions.
+              with elegant design. With strong expertise in
+              <span className="gradient-text font-bold"> JavaScript,</span>{" "}
+              <span className="gradient-text font-bold"> React,</span>{" "}
+              <span className="gradient-text font-bold"> Next.js,</span> and the{" "}
+              <span className="gradient-text font-bold"> MERN stack</span> I
+              enjoy turning complex problems into simple, efficient solutions.
             </p>
             <p className="text-muted-foreground mb-8 leading-relaxed">
               I am continuously learning and adapting to new technologies to
@@ -80,7 +68,15 @@ const About = () => {
                   className="text-center p-4 rounded-xl glass"
                 >
                   <div className="text-2xl font-bold gradient-text">
-                    {stat.value}
+                    {/* {stat.value} */}
+                    {/* <CountUp start={1} end={8} duration={3} /> */}
+                    <CountUp
+                      start={1}
+                      end={stat.value}
+                      duration={3}
+                      enableScrollSpy
+                      scrollSpyDelay={200}
+                    />+
                   </div>
                   <div className="text-xs text-muted-foreground mt-1">
                     {stat.label}
