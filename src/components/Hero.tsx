@@ -41,14 +41,7 @@ const Hero = () => {
             >
               MD Salman <span className="gradient-text">Hossain</span>
             </motion.h1>
-            {/* <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-xl sm:text-2xl text-muted-foreground font-medium mb-2"
-            >
-              Full Stack Developer
-            </motion.p> */}
+            
             <ExpertAnimatedRole />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -106,7 +99,7 @@ const Hero = () => {
                 <img
                   src={profileImg}
                   alt="MD Salman Hossain"
-                  className="w-full h-full object-cover animate-float"
+                  className="w-full h-full object-cover animate-float  "
                   loading="eager"
                 />
               </div>

@@ -4,10 +4,13 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
 const roles = [
+  
   'Full Stack Developer',
+  'Real World Problem Solver',
   'Frontend Engineer',
   'React & Next.js Specialist',
   'UI Animation Expert',
+  'TypeScript Learner'
 ];
 
 export default function ExpertAnimatedRole() {

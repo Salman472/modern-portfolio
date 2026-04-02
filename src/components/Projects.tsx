@@ -11,20 +11,56 @@ import project03 from "@/assets/project03.png";
 
 import ScrollReveal from "./ScrollReveal";
 import SectionHeading from "./SectionHeading";
-
-const projects = [
+ const projects = [
   {
     id: 1,
-    title: "Analytics Dashboard",
+    title: "Ticket Nest",
     category: "Full Stack",
     image: project1,
     hoverImage: project01,
     tech: ["React", "Node.js", "MongoDB", "Chart.js"],
-    description: "A modern analytics dashboard with real-time insights.",
+    description:
+      "A full-stack analytics dashboard with real-time data visualization, secure authentication, and seamless payment integration.",
     details:
-      "Built a scalable analytics platform featuring dynamic charts, user segmentation, and real-time data visualization. Integrated REST APIs and optimized performance for large datasets.",
-    liveUrl: "#",
-    githubUrl: "#",
+      "Developed a scalable full-stack analytics dashboard using React and Express, featuring real-time data visualization with interactive charts. Implemented secure authentication and user management using Firebase Admin, along with protected API routes. Integrated Stripe for seamless payment processing and subscription handling. Leveraged React Query for efficient data fetching and caching, and optimized performance for large datasets. Built a responsive and modern UI using Tailwind CSS, DaisyUI, and Framer Motion to enhance user experience. Additionally, incorporated geolocation features with React Leaflet and handled form management efficiently using React Hook Form.",
+   projectFeatures: [
+  "Scalable full-stack analytics dashboard using React and Express",
+  "Real-time data visualization with interactive charts",
+  "Secure authentication and user management using Firebase Admin",
+  "Protected API routes for enhanced security",
+  "Stripe integration for payment processing and subscription handling",
+  "Efficient data fetching and caching with React Query",
+  "Optimized performance for large datasets",
+  "Responsive and modern UI with Tailwind CSS, DaisyUI, and Framer Motion",
+  "Geolocation features implemented with React Leaflet",
+  "Form management and validation using React Hook Form",
+  "Role-based authentication for users, vendors, and admins",
+  "Secure ticket booking with integrated payment gateway",
+  "Interactive dashboards with event countdowns",
+  "Dynamic charts for analytics visualization",
+  "Streamlined form validation and management",
+  "Performance optimization across frontend and backend"
+],
+    problemsSolved: [
+      "Optimized large dataset handling and API performance",
+      "Implemented secure authentication and protected routes",
+      "Integrated Stripe payment system",
+      "Handled real-time data updates efficiently",
+      "Improved UI responsiveness and performance",
+      "Streamlined form validation and management",
+    ],
+    learnings: [
+      "Full-stack MERN development",
+      "API optimization and data caching",
+      "Authentication and security",
+      "Payment integration with Stripe",
+      "Responsive UI design",
+      "Form handling and validation",
+      "Performance optimization",
+    ],
+    liveUrl: "https://ticket-nest.netlify.app",
+    githubUrlClient: "https://github.com/Salman472/my-eticket-client",
+    githubUrlServer: "https://github.com/Salman472/my-eticket-server",
   },
   {
     id: 2,
@@ -135,10 +171,7 @@ const Projects = () => {
         </ScrollReveal>
 
         {/* Projects Grid */}
-        <motion.div
-          layout
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
             {currentProjects.map((project) => (
               <motion.div
@@ -186,6 +219,40 @@ const Projects = () => {
                   <p className="text-sm text-muted-foreground">
                     {project.description}
                   </p>
+                    {/* links */}
+            <div className="flex items-center gap-2 mt-4">
+              <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg"
+            >
+              <ExternalLink size={16} /> Live
+            </a>
+        
+
+          
+            <a
+              href={project.githubUrlClient}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg"
+            >
+              <Github size={16} /> Client
+            </a>
+      
+
+          
+            <a
+              href={project.githubUrlServer}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg"
+            >
+              <Github size={16} /> Server
+            </a>
+            </div>
+        
                 </div>
               </motion.div>
             ))}
@@ -203,26 +270,20 @@ const Projects = () => {
               Previous
             </button>
 
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-              (page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`px-4 py-2 rounded-lg ${
-                    currentPage === page
-                      ? "bg-primary text-white"
-                      : "bg-muted"
-                  }`}
-                >
-                  {page}
-                </button>
-              )
-            )}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`px-4 py-2 rounded-lg ${
+                  currentPage === page ? "bg-primary text-white" : "bg-muted"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
 
             <button
-              onClick={() =>
-                setCurrentPage((p) => Math.min(p + 1, totalPages))
-              }
+              onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
               disabled={currentPage === totalPages}
               className="px-4 py-2 bg-muted rounded-lg disabled:opacity-40"
             >
@@ -245,8 +306,9 @@ const Projects = () => {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-background rounded-xl max-w-lg w-full p-6 relative"
+              className="bg-background rounded-xl max-w-2xl w-full p-6 relative max-h-[90vh] flex flex-col"
             >
+              {/* Close button */}
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4"
@@ -254,49 +316,63 @@ const Projects = () => {
                 <X size={22} />
               </button>
 
+              {/* Image */}
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full rounded-lg mb-4"
+                className="w-full rounded-lg mb-4 object-cover max-h-60"
               />
 
-              <h2 className="text-xl font-bold mb-2">
-                {selectedProject.title}
-              </h2>
+              {/* Scrollable content */}
+              <div
+                className="overflow-y-auto pr-2"
+                style={{ maxHeight: "calc(90vh - 200px)" }}
+              >
+                <h2 className="text-xl font-bold mb-2">
+                  {selectedProject.title}
+                </h2>
 
-              <p className="text-muted-foreground mb-4">
-                {selectedProject.details}
-              </p>
+                
+                  <h1 className="font-semibold mb-2">Project Overview:</h1>
+                  <p className="text-muted-foreground mb-4">
+                  {selectedProject.details}
+                </p>
+                
 
-              <div className="flex flex-wrap gap-2 mb-4">
-                {selectedProject.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-2 py-1 bg-muted rounded-md"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+                {/* Features */}
+                {selectedProject.projectFeatures && (
+                  <div className="mb-4">
+                    <h3 className="font-semibold mb-2">Project Features:</h3>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground">
+                      {selectedProject.problemsSolved.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {/* Problems Solved */}
+                {selectedProject.problemsSolved && (
+                  <div className="mb-4">
+                    <h3 className="font-semibold mb-2">Problems Solved:</h3>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground">
+                      {selectedProject.problemsSolved.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              <div className="flex gap-4">
-                <a
-                  href={selectedProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg"
-                >
-                  <ExternalLink size={16} /> Live
-                </a>
-
-                <a
-                  href={selectedProject.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg"
-                >
-                  <Github size={16} /> Code
-                </a>
+                {/* Learnings */}
+                {selectedProject.learnings && (
+                  <div className="mb-4">
+                    <h3 className="font-semibold mb-2">Learnings:</h3>
+                    <ul className="list-disc list-inside text-sm text-muted-foreground">
+                      {selectedProject.learnings.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>
