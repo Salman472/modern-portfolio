@@ -1,118 +1,193 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Phone, Github, Linkedin, FacebookIcon, } from "lucide-react";
-import ScrollReveal from "./ScrollReveal";
-import SectionHeading from "./SectionHeading";
-import { useToast } from "@/hooks/use-toast";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Mail, MapPin, Phone, Github, Linkedin, Facebook, Send } from "lucide-react";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const form = useRef();
+  const [isSent, setIsSent] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendEmail = (e) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      toast({ title: "Please fill all fields", variant: "destructive" });
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      toast({ title: "Please enter a valid email", variant: "destructive" });
-      return;
-    }
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      setForm({ name: "", email: "", message: "" });
-      toast({ title: "Message sent!", description: "I'll get back to you soon." });
-    }, 1500);
+
+    emailjs
+      .sendForm(
+        "service_wwpb83g",
+        "template_tp1b6gj",
+        form.current,
+        "IumMikQm3AU-3iwga"
+      )
+      .then(
+        () => {
+          setIsSent(true);
+          setSending(false);
+          form.current.reset();
+          toast.success("Message sent successfully! ✅", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "dark",
+          });
+        },
+        (error) => {
+          setSending(false);
+          console.error("Error sending message:", error);
+          toast.error("Failed to send message. Please try again.", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "dark",
+          });
+        }
+      );
   };
 
   const contactInfo = [
-    { icon: Mail, label: "salmanhossain.dev@gmail.com", href: "mailto:salmanhossain.dev@gmail.com" },
-    { icon: MapPin, label: "Nandail, Mymensingh, Bangladesh", href: "#" },
-    { icon: Phone, label: "+880 1825328723", href: "#" },
+    {
+      icon: Mail,
+      label: "salmanhossain.dev@gmail.com",
+      href: "mailto:salmanhossain.dev@gmail.com",
+    },
+    {
+      icon: MapPin,
+      label: "Nandail, Mymensingh, Bangladesh",
+      href: "#",
+    },
+    {
+      icon: Phone,
+      label: "+880 1825328723",
+      href: "tel:+8801825328723",
+    },
   ];
 
   const socials = [
-    { icon: Github, href: "https://github.com/Salman472", },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/salman2025/", },
-    { icon: FacebookIcon, href: "https://www.facebook.com/md.sayem.hossain.71778" },
-    
-    
+    { icon: Github,   href: "https://github.com/Salman472" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/salman2025/" },
+    { icon: Facebook, href: "https://www.facebook.com/md.sayem.hossain.71778" },
   ];
 
   return (
     <section id="contact" className="py-20 md:py-28">
+      <ToastContainer />
+
       <div className="container mx-auto px-4 md:px-8">
-        <SectionHeading title="Contact Me" subtitle="Let's work together" />
+        {/* Section Heading */}
+        <div className="text-center mb-14">
+          <p className="text-purple-400 text-sm font-semibold tracking-widest uppercase mb-2">
+            Get in touch
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Contact Me</h2>
+          <div className="w-32 h-1 bg-purple-500 mx-auto mt-4" />
+        </div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Info */}
-          <ScrollReveal>
-            <div className="space-y-6">
-              <p className="text-muted-foreground">
-                I'm always open to new opportunities and interesting projects.
-                Feel free to reach out!
-              </p>
-              {contactInfo.map((item) => (
-                <a key={item.label} href={item.href} className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center glass group-hover:glow transition-shadow">
-                    <item.icon size={18} className="text-primary" />
-                  </div>
-                  <span className="text-muted-foreground group-hover:text-foreground transition-colors">{item.label}</span>
+
+          {/* ── Left: contact info ── */}
+          <div className="space-y-6">
+            <p className="text-gray-400">
+              I'm always open to new opportunities and interesting projects.
+              Feel free to reach out!
+            </p>
+
+            {contactInfo.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="flex items-center gap-4 group"
+              >
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#131025] border border-gray-700 group-hover:border-purple-500 transition-all">
+                  <item.icon size={18} className="text-purple-400" />
+                </div>
+                <span className="text-gray-400 group-hover:text-white transition-colors">
+                  {item.label}
+                </span>
+              </a>
+            ))}
+
+            <div className="flex gap-3 pt-4">
+              {socials.map((s, i) => (
+                <a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#131025] border border-gray-700 hover:border-purple-500 hover:-translate-y-1 transition-all"
+                >
+                  <s.icon size={18} className="text-gray-400 hover:text-white" />
                 </a>
               ))}
-              {/* social links */}
-              <div className="flex gap-3 pt-4">
-                {socials.map((s, i) => (
-                  <a key={i} href={s.href} className="w-10 h-10 rounded-lg flex items-center justify-center glass hover:glow transition-all hover:-translate-y-1">
-                    <s.icon size={18} className="text-muted-foreground hover:text-foreground" />
-                  </a>
-                ))}
-              </div>
             </div>
-          </ScrollReveal>
+          </div>
 
-          {/* Form */}
-          <ScrollReveal delay={0.2}>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                maxLength={100}
-                className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
-              />
+          {/* ── Right: contact form (original logic, zero changes) ── */}
+          <div>
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="space-y-4"
+            >
               <input
                 type="email"
+                name="user_email"
                 placeholder="Your Email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                maxLength={255}
-                className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-[#131025] border border-gray-700 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+              />
+              <input
+                type="text"
+                name="user_name"
+                placeholder="Your Name"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-[#131025] border border-gray-700 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+              />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-[#131025] border border-gray-700 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
               />
               <textarea
-                placeholder="Your Message"
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                name="message"
+                placeholder="Message"
                 rows={5}
-                maxLength={1000}
-                className="w-full px-4 py-3 rounded-xl bg-muted border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
+                required
+                className="w-full px-4 py-3 rounded-xl bg-[#131025] border border-gray-700 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all resize-none"
               />
-              <motion.button
+
+              <button
                 type="submit"
                 disabled={sending}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-3 rounded-xl font-medium text-primary-foreground flex items-center justify-center gap-2 disabled:opacity-50"
-                style={{ background: "var(--gradient-primary)" }}
+                className=" w-full inline-flex justify-center items-center gap-2 px-6 py-3 rounded-lg font-medium text-primary-foreground text-center"
+              style={{ background: "var(--gradient-primary)" }}
               >
-                {sending ? "Sending..." : <><Send size={16} /> Send Message</>}
-              </motion.button>
+                {sending ? (
+                  <>
+                    <span
+                      className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin"
+                      aria-hidden="true"
+                    />
+                    Sending…
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    Send Message
+                  </>
+                )}
+              </button>
             </form>
-          </ScrollReveal>
+          </div>
+
         </div>
       </div>
     </section>
