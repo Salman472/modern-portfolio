@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { ArrowDown, FileDown } from "lucide-react";
+import { lazy, Suspense } from "react";
 import profileImg from "@/assets/profile.png";
-import ThreeBackground from "./ThreeBackground";
 import ExpertAnimatedRole from "./ui/ExpertAnimatedRole";
 import cvFile from "@/assets/salman as a mern stack developer.pdf";
+
+const ThreeBackground = lazy(() => import("./ThreeBackground"));
 const techIcons = [
   { name: "React", color: "#61DAFB", pos: "top-0 left-0" },
   { name: "JS", color: "#F7DF1E", pos: "top-0 right-0" },
@@ -20,7 +22,13 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      <ThreeBackground />
+      <Suspense
+        fallback={
+          <div className="absolute inset-0 bg-gradient-to-br from-background to-muted" />
+        }
+      >
+        <ThreeBackground />
+      </Suspense>
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
           {/* Left */}
@@ -41,7 +49,7 @@ const Hero = () => {
             >
               MD Salman <span className="gradient-text">Hossain</span>
             </motion.h1>
-            
+
             <ExpertAnimatedRole />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
