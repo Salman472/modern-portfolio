@@ -34,11 +34,11 @@ const Experience = () => {
 
         <div className="relative max-w-2xl mx-auto">
           {/* Vertical line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px " />
 
           {timeline.map((item, i) => (
             <ScrollReveal key={i} delay={i * 0.15}>
-              <div className={`relative flex items-start gap-6 mb-10 md:mb-12 ${i % 2 === 0 ? "md:flex-row-reverse md:text-right" : ""}`}>
+              <div className={`relative flex items-start gap-6 mb-10 md:mb-12 ${i % 2 === 0 ? "md:flex-row-reverse md:text-right" : ""} cursor-pointer`}>
                 {/* Dot */}
                 <div className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full -translate-x-1.5 mt-2" style={{ background: "var(--gradient-primary)" }} />
 

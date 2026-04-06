@@ -32,7 +32,7 @@ const Footer = () => {
               Salman<span className="text-foreground">.</span>Hossain
             </a>
             <p className="text-sm text-muted-foreground mt-1">
-              Full Stack Developer
+              Web Developer
             </p>
           </div>
 

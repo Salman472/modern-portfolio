@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @layer base {
   :root {
@@ -36,9 +35,22 @@
 
     --radius: 0.75rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(230, 80%, 60%), hsl(270, 60%, 55%));
-    --gradient-hero: linear-gradient(135deg, hsl(230, 80%, 60%) 0%, hsl(270, 60%, 55%) 50%, hsl(300, 50%, 50%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(222, 47%, 12%) 0%, hsl(222, 47%, 8%) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(230, 80%, 60%),
+      hsl(270, 60%, 55%)
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      hsl(230, 80%, 60%) 0%,
+      hsl(270, 60%, 55%) 50%,
+      hsl(300, 50%, 50%) 100%
+    );
+    --gradient-card: linear-gradient(
+      135deg,
+      hsl(222, 47%, 12%) 0%,
+      hsl(222, 47%, 8%) 100%
+    );
 
     --glass-bg: hsla(222, 47%, 10%, 0.6);
     --glass-border: hsla(210, 40%, 96%, 0.08);
@@ -64,12 +76,12 @@
   }
 
   html {
-    scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
+    cursor: none;
   }
 
   /* Custom scrollbar */
@@ -111,14 +123,18 @@
     position: relative;
   }
   .gradient-border::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     padding: 1px;
     background: var(--gradient-primary);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
@@ -135,13 +151,23 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes bounce-icon {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-15px) scale(1.1); }
+    0%,
+    100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-15px) scale(1.1);
+    }
   }
 
   .animate-float {

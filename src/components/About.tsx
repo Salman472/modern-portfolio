@@ -20,11 +20,11 @@ const About = () => {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Image */}
           <ScrollReveal className="flex-1 flex justify-center">
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden gradient-border">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 cursor-pointer lg:h-96 rounded-2xl overflow-hidden gradient-border">
               <img
                 src={aboutImg}
                 alt="Salman working"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
@@ -61,7 +61,7 @@ const About = () => {
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 cursor-pointer">
               {stats.map((stat) => (
                 <div
                   key={stat.label}

@@ -26,7 +26,7 @@ const Services = () => {
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeading title="My Services" subtitle="What I can do for you" />
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 cursor-pointer">
           {services.map((service, i) => (
             <ScrollReveal key={service.title} delay={i * 0.15}>
               <div className="group p-8 rounded-2xl glass hover:glow transition-all duration-300 hover:-translate-y-2 text-center">

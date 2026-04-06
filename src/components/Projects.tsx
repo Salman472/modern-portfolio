@@ -200,7 +200,7 @@ const Projects = () => {
 
         {/* Filters */}
         <ScrollReveal>
-          <div className="flex justify-center gap-3 mb-12 flex-wrap">
+          <div className="flex justify-center gap-3 mb-12 flex-wrap ">
             {filters.map((filter) => (
               <button
                 key={filter}
@@ -219,7 +219,7 @@ const Projects = () => {
         </ScrollReveal>
 
         {/* Projects Grid */}
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
           <AnimatePresence>
             {currentProjects.length > 0 ? (
               currentProjects.map((project) => (
@@ -302,7 +302,7 @@ const Projects = () => {
               ))
             ) : (
               <motion.div
-  className="col-span-full flex flex-col items-center justify-center py-24 text-center"
+  className="col-span-full flex flex-col items-center justify-center py-24 text-center "
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   exit={{ opacity: 0, y: 20 }}
